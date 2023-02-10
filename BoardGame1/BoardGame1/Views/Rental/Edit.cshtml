@@ -1,0 +1,22 @@
+﻿@model BoardGame1.Models.RentalDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Rental Order</h2>
+
+<form action="/Rental/Update/@Model.RentalId" method="POST">
+    <div style="display:none;">
+
+        <input type="text" name="RentalId" value="@Model.RentalId" />
+    </div>
+
+    <div>
+        <label>Rental Date:</label> <input type="date" name="RentDate" value="@Model.RentDate" />
+    </div>
+
+    <div>
+        <input type="submit" value="Update Rental Order" />
+
+    </div>
+</form>

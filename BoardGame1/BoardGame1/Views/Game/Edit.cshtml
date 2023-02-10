@@ -1,0 +1,28 @@
+﻿@model BoardGame1.Models.ViewModels.UpdateGame
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Game</h2>
+
+<form action="/Game/Update/@Model.SelectedGame.GameId" method="POST">
+    <div style="display:none;">
+
+        <input type="text" name="GameId" value="@Model.SelectedGame.GameId" />
+    </div>
+    <div>
+        <label>Name:</label> <input type="text" name="GameName" value="@Model.SelectedGame.GameName" />
+    </div>
+    <div>
+        <label>Price ($):</label> <input type="number" name="GamePrice" value="@Model.SelectedGame.GamePrice" />
+    </div>
+    <div>
+        <label>Rental ID:</label> <input type="number" name="RentalId" value="@Model.SelectedGame.RentalId" />
+    </div>
+  
+
+    <div>
+        <input type="submit" value="Update Game" />
+
+    </div>
+</form>

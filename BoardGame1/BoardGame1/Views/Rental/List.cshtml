@@ -1,0 +1,14 @@
+﻿@model IEnumerable<BoardGame1.Models.RentalDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<a href="/Rental/New">New Rental Order</a>
+@foreach (var rental in Model)
+{
+    <h2><a href="/Rental/Details/@rental.RentalId">Rental Order: @rental.RentalId</a></h2>
+    <div>Rental Date: @rental.RentDate</div>
+
+
+}

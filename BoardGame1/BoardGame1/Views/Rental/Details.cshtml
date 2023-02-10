@@ -1,0 +1,15 @@
+﻿@model BoardGame1.Models.ViewModels.DetailsRental
+@{
+    ViewBag.Title = "View";
+}
+
+<a href="/Rental/List">Go back to list</a>
+<br />
+<a href="/Rental/Edit/@Model.SelectedRental.RentalId">Update</a>
+<br />
+<a style="color:#ab2020;" href="/Rental/DeleteConfirm/@Model.SelectedRental.RentalId">Delete</a>
+
+<h2>Rental Order: @Model.SelectedRental.RentalId</h2>
+
+<div>Rental Date: @Model.SelectedRental.RentDate</div>
+

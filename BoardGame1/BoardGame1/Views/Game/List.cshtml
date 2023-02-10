@@ -1,0 +1,16 @@
+﻿@model IEnumerable<BoardGame1.Models.GameDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<a href="/Game/New">New Game</a>
+@foreach (var game in Model)
+{
+    <h2><a href="/Game/Details/@game.GameId">@game.GameName</a></h2>
+    <div>Rent Price: @game.GamePrice $</div>
+    <div>Rental Order: @game.RentalId</div>
+    <div>Rental Date: @game.RentDate</div>
+
+
+}
