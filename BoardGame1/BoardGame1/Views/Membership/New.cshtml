@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Membership Account</h2>
+
+<form action="/Membership/Create" method="POST">
+
+    <div>
+        <label>Membership first name:</label> <input type="text" input name="FirstName" />
+    </div>
+
+    <div>
+        <label>Membership last name:</label> <input type="text" input name="LastName" />
+    </div>
+
+    <div>
+        <input type="submit" value="Add Membership" />
+
+    </div>
+</form>

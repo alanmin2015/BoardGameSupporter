@@ -13,3 +13,24 @@
 <div>Rental Order: @Model.SelectedGame.RentalId</div>
 <div>Rental Date: @Model.SelectedGame.RentDate</div>
 
+<div>
+    <h2>Memberships Related Game for @Model.SelectedGame.GameName:</h2>
+    @foreach (var membership in Model.RelatedMemberships)
+    {
+        <p><a href="/Membership/Details/@membership.MembershipId">@membership.FirstName @membership.LastName</a></p>
+    }
+
+    <div>
+        <h4>Membership rent new game @Model.SelectedGame.GameName</h4>
+        <form method="POST" action="/Game/Associate/@Model.SelectedGame.GameId">
+            <select name="MembershipId">
+                @foreach (var membership in Model.AvailableMemberships)
+                {
+                    <option value="@membership.MembershipId">@membership.FirstName @membership.LastName</option>
+                }
+
+            </select>
+            <input type="submit" value="Associate Keeper" />
+        </form>
+    </div>
+</div>

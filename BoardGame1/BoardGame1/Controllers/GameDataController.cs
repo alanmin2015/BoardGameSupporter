@@ -37,6 +37,48 @@ namespace BoardGame1.Controllers
             return Ok(GameDtos);
         }
 
+        // GET: api/GameData/ListGamesForRental/5
+        [HttpGet]
+        [ResponseType(typeof(GameDto))]
+        public IHttpActionResult ListGamesForRental(int id)
+        {
+            List<Game> Games = db.Games.Where(a=>a.RentalId==id).ToList();
+            List<GameDto> GameDtos = new List<GameDto>();
+
+            Games.ForEach(a => GameDtos.Add(new GameDto()
+            {
+                GameId = a.GameId,
+                GameName = a.GameName,
+                GamePrice = a.GamePrice,
+                RentalId = a.Rentals.RentalId,
+                RentDate = a.Rentals.RentDate
+            }));
+
+            return Ok(GameDtos);
+        }
+
+        // GET: api/GameData/ListGamesForMembership/1
+        [HttpGet]
+        [ResponseType(typeof(GameDto))]
+        public IHttpActionResult ListGamesForMembership(int id)
+        {
+            List<Game> Games = db.Games.Where(
+                a => a.Memberships.Any(
+                    m=>m.MembershipId==id
+                    )).ToList();
+            List<GameDto> GameDtos = new List<GameDto>();
+
+            Games.ForEach(a => GameDtos.Add(new GameDto()
+            {
+                GameId = a.GameId,
+                GameName = a.GameName,
+                GamePrice = a.GamePrice,
+                RentalId = a.Rentals.RentalId,
+                RentDate = a.Rentals.RentDate
+            }));
+
+            return Ok(GameDtos);
+        }
         // GET: api/GameData/FindGame/1
         [ResponseType(typeof(GameDto))]
         [HttpGet]

@@ -53,10 +53,21 @@ namespace BoardGame1.Controllers
 
             GameDto SelectedGame = response.Content.ReadAsAsync<GameDto>().Result;
 
+            ViewModel.SelectedGame = SelectedGame;
 
-           ViewModel.SelectedGame = SelectedGame;
 
-   
+            url = "membershipdata/listmembershipsforgame/" + id;
+            response=client.GetAsync(url).Result;
+            IEnumerable<MembershipDto> RelatedMemberships= response.Content.ReadAsAsync<IEnumerable<MembershipDto>>().Result;
+
+            ViewModel.RelatedMemberships = RelatedMemberships;
+
+
+            url = "membershipdata/ListMembershipsNoGame/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<MembershipDto> AvailableMemberships = response.Content.ReadAsAsync<IEnumerable<MembershipDto>>().Result;
+            ViewModel.AvailableMemberships = AvailableMemberships;
+
 
 
             return View(ViewModel);
@@ -65,7 +76,11 @@ namespace BoardGame1.Controllers
         // GET: Game/New
         public ActionResult New()
         {
-            return View();
+            string url= "RentalData/ListRentals";
+
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            IEnumerable<RentalDto> RentalOptions=response.Content.ReadAsAsync<IEnumerable<RentalDto>>().Result;
+            return View(RentalOptions);
         }
 
         // POST: Game/Create
@@ -103,8 +118,14 @@ namespace BoardGame1.Controllers
             string url = "gamedata/findgame/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             GameDto SelectedGame = response.Content.ReadAsAsync<GameDto>().Result;
+
             ViewModel.SelectedGame = SelectedGame;
-           
+
+            url = "RentalData/ListRentals/";
+            response = client.GetAsync(url).Result;
+            IEnumerable<RentalDto> RentalOptions = response.Content.ReadAsAsync<IEnumerable<RentalDto>>().Result;
+
+            ViewModel.RentalOptions = RentalOptions;
             return View(ViewModel);
         }
 

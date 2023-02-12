@@ -1,0 +1,26 @@
+﻿@model BoardGame1.Models.MembershipDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Membership Account</h2>
+
+<form action="/Membership/Update/@Model.MembershipId" method="POST">
+    <div style="display:none;">
+
+        <input type="text" name="MembershipId" value="@Model.MembershipId" />
+    </div>
+
+    <div>
+        <label>Membership first name:</label> <input type="text" name="FirstName" value="@Model.FirstName" />
+    </div>
+
+    <div>
+        <label>Membership last name:</label> <input type="text" name="LastName" value="@Model.LastName" />
+    </div>
+
+    <div>
+        <input type="submit" value="Update Membership Account" />
+
+    </div>
+</form>

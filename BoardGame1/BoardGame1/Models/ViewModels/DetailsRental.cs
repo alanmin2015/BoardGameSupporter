@@ -8,5 +8,6 @@ namespace BoardGame1.Models.ViewModels
     public class DetailsRental
     {
         public RentalDto SelectedRental { get; set; }
+        public IEnumerable<GameDto> RelatedGames { get; set; }
     }
 }

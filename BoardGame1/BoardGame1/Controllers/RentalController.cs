@@ -41,9 +41,6 @@ namespace BoardGame1.Controllers
         // GET: Rental/Details/5
         public ActionResult Details(int id)
         {
-
-  
-
             DetailsRental ViewModel = new DetailsRental();
 
             string url = "RentalData/findrental/" + id;
@@ -54,6 +51,12 @@ namespace BoardGame1.Controllers
 
             ViewModel.SelectedRental = SelectedRental;
 
+
+            url = "gameData/listgamesforrental/" + id;
+            response= client.GetAsync(url).Result;
+            IEnumerable<GameDto> RelatedGames = response.Content.ReadAsAsync<IEnumerable<GameDto>>().Result; 
+
+           ViewModel.RelatedGames = RelatedGames;
      
 
 

@@ -13,3 +13,11 @@
 
 <div>Rental Date: @Model.SelectedRental.RentDate</div>
 
+<div style="margin-top:100px;">
+    <h3>Games related to this purchase order</h3>
+    @foreach (var game in Model.RelatedGames)
+    {
+       <p> <a href="/Game/Details/@game.GameId">Game Name: @game.GameName //Game Price: @game.GamePrice $</a></p>
+
+    }
+</div>

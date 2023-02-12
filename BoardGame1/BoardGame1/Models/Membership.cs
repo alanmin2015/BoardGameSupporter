@@ -16,4 +16,13 @@ namespace BoardGame1.Models
 
         public ICollection<Game> Games { get; set; }
     }
+
+    public class MembershipDto
+    {
+        public int MembershipId { get; set; }
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+    }
 }

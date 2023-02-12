@@ -1,0 +1,21 @@
+﻿@model BoardGame1.Models.ViewModels.DetailsMembership
+@{
+    ViewBag.Title = "View";
+}
+
+<a href="/Membership/List">Go back to list</a>
+<br />
+<a href="/Membership/Edit/@Model.SelectedMembership.MembershipId">Update</a>
+<br />
+<a style="color:#ab2020;" href="/Membership/DeleteConfirm/@Model.SelectedMembership.MembershipId">Delete</a>
+
+<div>First Name: @Model.SelectedMembership.FirstName</div>
+<div>Last Name: @Model.SelectedMembership.LastName</div>
+<div>
+    <h3>Own Game:</h3>
+    @foreach (var game in Model.KeptGames)
+    {
+        <a href="/game/Details/@game.GameId">@game.GameName</a><br />
+
+    }
+</div>

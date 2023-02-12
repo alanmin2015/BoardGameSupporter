@@ -17,9 +17,14 @@
         <label>Price ($):</label> <input type="number" name="GamePrice" value="@Model.SelectedGame.GamePrice" />
     </div>
     <div>
-        <label>Rental ID:</label> <input type="number" name="RentalId" value="@Model.SelectedGame.RentalId" />
+        <label>Rental Order:</label>
+        <select name="RentalId">
+            @foreach (var rental in Model.RentalOptions)
+            {
+                <option value="@rental.RentalId">Rental ID:  @rental.RentalId Rental Date: @rental.RentDate</option>
+            }
+        </select>
     </div>
-  
 
     <div>
         <input type="submit" value="Update Game" />

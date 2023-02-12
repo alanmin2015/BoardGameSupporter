@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<BoardGame1.Models.RentalDto>
 @{
     ViewBag.Title = "Create";
 }
@@ -13,11 +13,15 @@
         <label>Price ($):</label> <input type="number" name="GamePrice" />
     </div>
     <div>
-        <label>Rental ID:</label> <input type="number" input name="RentalId" />
+        <label>Rental Order:</label>
+        <select name="RentalId">
+            @foreach (var rental in Model)
+            {
+                <option value="@rental.RentalId">Rental ID:  @rental.RentalId Rental Date: @rental.RentDate</option>
+            }
+        </select>
     </div>
-    <div>
-        <label>Rental Date:</label> <input type="date" input name="RentDate" />
-    </div>
+
     <div>
         <input type="submit" value="Add Game" />
 

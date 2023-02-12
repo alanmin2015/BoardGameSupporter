@@ -1,0 +1,14 @@
+﻿@model IEnumerable<BoardGame1.Models.MembershipDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<a href="/Membership/New">Create New Membership</a>
+@foreach (var membership in Model)
+{
+    <h2><a href="/Membership/Details/@membership.MembershipId">Membership ID: @membership.MembershipId</a></h2>
+    <div>First Name: @membership.FirstName</div>
+    <div>Last Name: @membership.LastName</div>
+
+}

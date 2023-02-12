@@ -186,6 +186,8 @@
     <Compile Include="Controllers\GameDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MembershipController.cs" />
+    <Compile Include="Controllers\MembershipDataController.cs" />
     <Compile Include="Controllers\RentalController.cs" />
     <Compile Include="Controllers\RentalDataController.cs" />
     <Compile Include="Global.asax.cs">
@@ -223,6 +225,7 @@
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ViewModels\DetailsMembership.cs" />
     <Compile Include="Models\ViewModels\DetailsRental.cs" />
     <Compile Include="Models\ViewModels\UpdateGame.cs" />
     <Compile Include="Models\ViewModels\DetailsGame.cs" />
@@ -299,9 +302,16 @@
     <Content Include="Views\Rental\New.cshtml" />
     <Content Include="Views\Rental\DeleteConfirm.cshtml" />
     <Content Include="Views\Rental\Edit.cshtml" />
+    <Content Include="Views\Membership\List.cshtml" />
+    <Content Include="Views\Membership\DeleteConfirm.cshtml" />
+    <Content Include="Views\Membership\Details.cshtml" />
+    <Content Include="Views\Membership\Edit.cshtml" />
+    <Content Include="Views\Membership\Error.cshtml" />
+    <Content Include="Views\Membership\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\DetailsMembership\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
