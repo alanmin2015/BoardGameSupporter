@@ -48,6 +48,7 @@ namespace BoardGame1.Controllers
            
 
             string url = "gamedata/findgame/" + id;
+            Debug.WriteLine(url);
             HttpResponseMessage response = client.GetAsync(url).Result;
 
 
@@ -71,6 +72,33 @@ namespace BoardGame1.Controllers
 
 
             return View(ViewModel);
+        }
+
+        //POST: Game/Associate/{gameid}
+        [HttpPost]
+        public ActionResult Associate(int id, int MembershipId)
+        {
+            string url = "gamedata/associategamewithmembership/" + id + "/" + MembershipId;
+            Debug.WriteLine(url);
+           HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            return RedirectToAction("Details/" + id);
+        }
+
+        //Get: Game/UnAssociate/{id}?membershipId={membershipId}
+        [HttpGet]
+        public ActionResult UnAssociate(int id, int MembershipId)
+        {
+        
+
+ 
+            string url = "gamedata/unassociateGameWithMembership/" + id + "/" + MembershipId;
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+            return RedirectToAction("Details/" + id);
         }
 
         // GET: Game/New

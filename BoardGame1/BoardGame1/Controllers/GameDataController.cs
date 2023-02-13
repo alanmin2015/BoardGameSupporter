@@ -10,6 +10,9 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using BoardGame1.Models;
 using System.Diagnostics;
+using BoardGame1.Migrations;
+using Game = BoardGame1.Models.Game;
+using Membership = BoardGame1.Models.Membership;
 
 namespace BoardGame1.Controllers
 {
@@ -79,6 +82,39 @@ namespace BoardGame1.Controllers
 
             return Ok(GameDtos);
         }
+
+        [HttpPost]
+        [Route("api/gamedata/AssociateGameWithMembership/{gameid}/{membershipid}")]
+
+        public IHttpActionResult AssociateGameWithMembership(int gameid, int membershipid)
+        {
+            Game SelectedGame = db.Games.Include(a=>a.Memberships).Where(a=>a.GameId==gameid).FirstOrDefault();
+            Membership SelectedMembership=db.Memberships.Find(membershipid);
+ 
+
+            SelectedGame.Memberships.Add(SelectedMembership);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("api/gamedata/UnAssociateGameWithMembership/{gameid}/{membershipid}")]
+        public IHttpActionResult UnAssociateGameWithMembership(int gameid, int membershipid)
+        {
+            Game SelectedGame = db.Games.Include(a => a.Memberships).Where(a => a.GameId == gameid).FirstOrDefault();
+            Membership SelectedMembership = db.Memberships.Find(membershipid);
+
+
+
+
+
+            SelectedGame.Memberships.Remove(SelectedMembership);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
         // GET: api/GameData/FindGame/1
         [ResponseType(typeof(GameDto))]
         [HttpGet]
